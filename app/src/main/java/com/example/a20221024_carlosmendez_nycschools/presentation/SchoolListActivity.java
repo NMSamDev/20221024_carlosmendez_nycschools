@@ -3,41 +3,35 @@ package com.example.a20221024_carlosmendez_nycschools.presentation;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentContainerView;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.a20221024_carlosmendez_nycschools.R;
-
 import com.example.a20221024_carlosmendez_nycschools.domain.model.School;
 import com.example.a20221024_carlosmendez_nycschools.presentation.adapter.SchoolListAdapter;
+import com.example.a20221024_carlosmendez_nycschools.presentation.viewmodel.SchoolViewModel;
 
 import java.util.List;
 
 public class SchoolListActivity extends AppCompatActivity {
 
-    private List<School> schoolList;
-    private SchoolListAdapter adapter;
-    private SchoolViewModel schoolViewModel;
+    FragmentContainerView fragmentContainerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school_list);
 
-        RecyclerView recyclerView = findViewById(R.id.rv_school_list);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new SchoolListAdapter(this, schoolList);
-        recyclerView.setAdapter(adapter);
+        fragmentContainerView = findViewById(R.id.fragment_container_view);
 
-        schoolViewModel = ViewModelProviders.of(this).get(SchoolViewModel.class);
+        // Fragment Container View
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .setReorderingAllowed(true)
+                    .add(R.id.fragment_container_view, FragmentSchoolList.class, null)
+                    .commit();
+        }
 
-        schoolViewModel.getSchoolListObserver().observe(this, schools -> {
-            if(schools != null) {
-                schoolList = schools;
-                adapter.setSchoolList(schoolList);
-            }
-        });
-        schoolViewModel.getSchoolsAPI();
     }
 }

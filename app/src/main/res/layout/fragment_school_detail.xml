@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <TextView
+        android:id="@+id/tv_school_name_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text = "School Name"
+        android:textAlignment="center"
+        android:layout_margin="10dp"
+        android:textSize="24sp"
+        android:background="@android:color/holo_blue_light"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <TextView
+        android:id="@+id/tv_reading_score_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_school_name_detail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        android:textSize="16sp"
+        android:layout_margin="8dp"
+        android:padding="4dp"
+        android:background="@android:color/holo_green_light"
+        android:text = "@string/critical_reading_score"
+        />
+
+    <TextView
+        android:id="@+id/tv_math_score_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_reading_score_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        android:textSize="16sp"
+        android:layout_margin="8dp"
+        android:padding="4dp"
+        android:background="@android:color/holo_green_light"
+        android:text = "@string/math_score"
+        />
+
+    <TextView
+        android:id="@+id/tv_writing_score_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_math_score_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        android:textSize="16sp"
+        android:layout_margin="8dp"
+        android:padding="4dp"
+        android:background="@android:color/holo_green_light"
+        android:text = "@string/writing_score"
+        />
+
+    <TextView
+        android:id="@+id/tv_reading_score_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/tv_reading_score_label"
+        app:layout_constraintStart_toStartOf="@id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/tv_reading_score_label"
+        android:textSize="16sp"
+        android:layout_margin="8dp"
+        android:padding="4dp"
+        android:background="@android:color/holo_green_light"
+        tools:text = "100"
+        />
+
+    <TextView
+        android:id="@+id/tv_math_score_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/tv_math_score_label"
+        app:layout_constraintStart_toStartOf="@id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/tv_math_score_label"
+        android:textSize="16sp"
+        android:layout_margin="8dp"
+        android:padding="4dp"
+        android:background="@android:color/holo_green_light"
+        tools:text = "100"
+        />
+
+    <TextView
+        android:id="@+id/tv_writing_score_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/tv_writing_score_label"
+        app:layout_constraintStart_toStartOf="@id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/tv_writing_score_label"
+        android:textSize="16sp"
+        android:layout_margin="8dp"
+        android:padding="4dp"
+        android:background="@android:color/holo_green_light"
+        tools:text = "100"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
