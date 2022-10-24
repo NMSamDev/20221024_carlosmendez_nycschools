@@ -3,4 +3,5 @@
     <string name="critical_reading_score">Critical Reading Score:</string>
     <string name="math_score">Math Score:</string>
     <string name="writing_score">Writing Score:</string>
+    <string name="no_sat_scores_available">No SAT Scores Available</string>
 </resources>

@@ -87,7 +87,7 @@ public class FragmentSchoolDetail extends DialogFragment {
         tvMathScore.setVisibility(View.GONE);
         tvWritingScore.setVisibility(View.GONE);
 
-        tvSchoolName.setText("No SAT Scores Available");
+        tvSchoolName.setText(R.string.no_sat_scores_available);
         tvSchoolName.setBackgroundColor(getResources().getColor(R.color.white));
     }
 }

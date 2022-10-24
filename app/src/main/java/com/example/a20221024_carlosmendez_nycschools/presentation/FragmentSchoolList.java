@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,6 +35,7 @@ public class FragmentSchoolList extends Fragment {
         View view = inflater.inflate(R.layout.fragment_school_list, container, false);
 
         schoolViewModel = ViewModelProviders.of(this).get(SchoolViewModel.class);
+        ProgressBar progressBar = view.findViewById(R.id.progressBar);
         RecyclerView recyclerView = view.findViewById(R.id.rv_school_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new SchoolListAdapter(getContext(), schoolList);
@@ -43,6 +45,7 @@ public class FragmentSchoolList extends Fragment {
             if(schools != null) {
                 schoolList = schools;
                 adapter.setSchoolList(schoolList);
+                progressBar.setVisibility(View.GONE);
             }
         });
         schoolViewModel.getSchoolsAPI();
