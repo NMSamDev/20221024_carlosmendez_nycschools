@@ -36,22 +36,19 @@ public class FragmentSchoolDetail extends DialogFragment {
     private TextView tvLabelWritingScore;
 
     private String dbn;
-    public FragmentSchoolDetail(String dbn){
-        this.dbn = dbn;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        dbn = getArguments().getString("dbn");
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_school_detail, container, false);
-        tvSchoolName = view.findViewById(R.id.tv_school_name_detail);
-        tvReadingScore = view.findViewById(R.id.tv_reading_score_value);
-        tvMathScore = view.findViewById(R.id.tv_math_score_value);
-        tvWritingScore = view.findViewById(R.id.tv_writing_score_value);
 
-        tvLabelReadingScore = view.findViewById(R.id.tv_reading_score_label);
-        tvLabelMathScore = view.findViewById(R.id.tv_math_score_label);
-        tvLabelWritingScore = view.findViewById(R.id.tv_writing_score_label);
+        findViews(view);
 
         schoolViewModel = ViewModelProviders.of(this).get(SchoolViewModel.class);
         schoolViewModel.getSatResultListObserver().observe(getViewLifecycleOwner(), satResults -> {
@@ -71,6 +68,17 @@ public class FragmentSchoolDetail extends DialogFragment {
         return view;
     }
 
+    void findViews(View view) {
+        tvSchoolName = view.findViewById(R.id.tv_school_name_detail);
+        tvReadingScore = view.findViewById(R.id.tv_reading_score_value);
+        tvMathScore = view.findViewById(R.id.tv_math_score_value);
+        tvWritingScore = view.findViewById(R.id.tv_writing_score_value);
+
+        tvLabelReadingScore = view.findViewById(R.id.tv_reading_score_label);
+        tvLabelMathScore = view.findViewById(R.id.tv_math_score_label);
+        tvLabelWritingScore = view.findViewById(R.id.tv_writing_score_label);
+    }
+
     void showDataNotFetchedMessage(){
         tvLabelMathScore.setVisibility(View.GONE);
         tvLabelReadingScore.setVisibility(View.GONE);
@@ -80,7 +88,6 @@ public class FragmentSchoolDetail extends DialogFragment {
         tvWritingScore.setVisibility(View.GONE);
 
         tvSchoolName.setText("No SAT Scores Available");
-        // Set background color to white
         tvSchoolName.setBackgroundColor(getResources().getColor(R.color.white));
     }
 }

@@ -1,6 +1,7 @@
 package com.example.a20221024_carlosmendez_nycschools.presentation.adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,12 +21,10 @@ import java.util.List;
 public class SchoolListAdapter extends RecyclerView.Adapter<SchoolListAdapter.SchoolViewHolder> {
     private Context context;
     private List<School> schoolList;
-    private SchoolViewModel schoolViewModel;
 
-    public SchoolListAdapter(Context context, List<School> schoolList, SchoolViewModel schoolViewModel) {
+    public SchoolListAdapter(Context context, List<School> schoolList) {
         this.context = context;
         this.schoolList = schoolList;
-        this.schoolViewModel = schoolViewModel;
     }
 
     public void setSchoolList(List<School> schoolList) {
@@ -76,13 +75,14 @@ public class SchoolListAdapter extends RecyclerView.Adapter<SchoolListAdapter.Sc
                 // get the school's dbn
                 String dbn = school.getDbn();
 
-                schoolViewModel.getSatResultsAPI(dbn);
+                FragmentSchoolDetail fragmentSchoolDetail = new FragmentSchoolDetail();
 
-                FragmentSchoolDetail fragmentSchoolDetail = new FragmentSchoolDetail(dbn);
+                Bundle args = new Bundle();
+                args.putString("dbn", dbn);
+                fragmentSchoolDetail.setArguments(args);
 
                 // Show dialog fragment
                 fragmentSchoolDetail.show(((SchoolListActivity) context).getSupportFragmentManager(), "School Detail");
-
             });
         }
     }

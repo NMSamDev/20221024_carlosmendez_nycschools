@@ -36,7 +36,7 @@ public class FragmentSchoolList extends Fragment {
         schoolViewModel = ViewModelProviders.of(this).get(SchoolViewModel.class);
         RecyclerView recyclerView = view.findViewById(R.id.rv_school_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new SchoolListAdapter(getContext(), schoolList, schoolViewModel);
+        adapter = new SchoolListAdapter(getContext(), schoolList);
         recyclerView.setAdapter(adapter);
 
         schoolViewModel.getSchoolListObserver().observe(getViewLifecycleOwner(), schools -> {

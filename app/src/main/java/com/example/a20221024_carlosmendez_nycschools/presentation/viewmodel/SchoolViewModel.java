@@ -62,14 +62,14 @@ public class SchoolViewModel extends ViewModel {
 
             @Override
             public void onResponse(Call<List<SatResult>> call, Response<List<SatResult>> response) {
-                satResultList.setValue(response.body());
+                satResultList.postValue(response.body());
                 Log.d(TAG, "onResponse Body: " + response.body());
             }
 
             @Override
             public void onFailure(Call<List<SatResult>> call, Throwable t) {
                 Log.d(TAG, "onResponse Failed: " + t.getMessage());
-                satResultList.setValue(null);
+                satResultList.postValue(null);
             }
         });
     }
